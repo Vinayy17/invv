@@ -1,0 +1,6 @@
+# Ignore sensitive files
+credential.json
+FIREBASE_CREDS_JSON.json
+credentials.json
+.env
+
