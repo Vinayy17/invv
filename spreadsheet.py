@@ -4,16 +4,24 @@ import gspread
 from firebase_admin import firestore
 import firebase_admin
 from firebase_admin import credentials
+import os
+from dotenv import load_dotenv
 
 # Setup logger
 logger = logging.getLogger("spreadsheet")
 logging.basicConfig(level=logging.INFO)
 
-# Spreadsheet ID from URL: https://docs.google.com/spreadsheets/d/<ID>/edit
+# Load environment variables from .env file
+load_dotenv()
+
+# Spreadsheet ID from URL
 SPREADSHEET_ID = "1oHZaMlRgjshM-iQmB05l7ph-3tb_fRtGKeBKY-8OzqI"
 
-# Initialize gspread with service account
-gc = gspread.service_account(filename="credentials.json")
+# Get the credentials path from .env
+creds_path = os.getenv("GOOGLE_CREDENTIALS_PATH")
+
+# ✅ Use the path from .env
+gc = gspread.service_account(filename=creds_path)
 
 # Setup Firebase Admin SDK
 cred = credentials.Certificate("FIREBASE_CREDS_JSON.json")
