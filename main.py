@@ -10,6 +10,7 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 import magic
 from update_invoice import update_invoice_route
+import json
 
 # Initialize Flask app
 app = Flask(__name__)
